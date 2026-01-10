@@ -58,7 +58,7 @@ Portfolio-ready real estate project showcasing:
 
 \*\*Bold text\*\*
 
-\- List item
+\- List item y
 
 
 
