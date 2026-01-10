@@ -1,30 +1,32 @@
 \# Estatia
 
-\*\*Motto:\*\* Real Estate, Real Easy
+\*\*Motto:\*\* Real Estate, Real Easy 🏡
 
 
 
-\## Description
+\##  Description
 
-Estatia is a modern \*\*ASP.NET Core MVC\*\* real estate application for managing and discovering properties. It supports \*\*property listings, search, and user management\*\* for buyers, sellers, and agents.
+Estatia is a modern \*\*ASP.NET Core MVC\*\* real estate application for managing and discovering properties.  
+
+It supports \*\*property listings, search, and user management\*\* for buyers, sellers, and agents.
 
 
 
-\## Features
+\##  Features
 
-\- User-friendly property search and listing
+\- \*\*User-friendly property search and listing\*\*
 
-\- Responsive design for desktop \& mobile
+\- \*\*Responsive design\*\* for desktop \& mobile
 
-\- Role-based access: Admin, Agent, Buyer
+\- \*\*Role-based access\*\*: Admin, Agent, Buyer
 
 \- Property details, images, and contact forms
 
-\- Uses \*\*SQL Server\*\* or \*\*SQLite\*\* for database
+\- Supports \*\*SQL Server\*\* or \*\*SQLite\*\* for database
 
 
 
-\## Tech Stack
+\## 🛠 Tech Stack
 
 \- \*\*Backend:\*\* ASP.NET Core MVC
 
@@ -36,9 +38,15 @@ Estatia is a modern \*\*ASP.NET Core MVC\*\* real estate application for managin
 
 
 
-\## Purpose
+\##  Purpose
 
-Portfolio-ready real estate project showcasing \*\*full-stack ASP.NET Core MVC development\*\*, database design, and modern web application practices.
+Portfolio-ready real estate project showcasing:
+
+\- \*\*Full-stack ASP.NET Core MVC development\*\*
+
+\- \*\*Database design\*\*
+
+\- \*\*Modern web application practices\*\*
 
 
 
