@@ -1,64 +1,35 @@
-\# Estatia
+# Estatia
 
-\*\*Motto:\*\* Real Estate, Real Easy 🏡
+**Motto:** Real Estate, Real Easy 🏡
 
+## Description
 
+Estatia is a modern **ASP.NET Core MVC** real estate application for managing and discovering properties.
 
-\##  Description
+It supports **property listings, search, and user management** for buyers, sellers, and agents.
 
-Estatia is a modern \*\*ASP.NET Core MVC\*\* real estate application for managing and discovering properties.  
+## Features
 
-It supports \*\*property listings, search, and user management\*\* for buyers, sellers, and agents.
+- **User-friendly property search and listing**
+- **Responsive design** for desktop & mobile
+- **Role-based access**: Admin, Agent, Buyer
+- Property details, images, and contact forms
+- Supports **SQL Server** or **SQLite** for database
 
+## 🛠 Tech Stack
 
+- **Backend:** ASP.NET Core MVC
+- **Database:** SQL Server / SQLite
+- **Frontend:** Razor Views, Bootstrap
+- **Other:** Entity Framework Core, LINQ
 
-\##  Features
-
-\- \*\*User-friendly property search and listing\*\*
-
-\- \*\*Responsive design\*\* for desktop \& mobile
-
-\- \*\*Role-based access\*\*: Admin, Agent, Buyer
-
-\- Property details, images, and contact forms
-
-\- Supports \*\*SQL Server\*\* or \*\*SQLite\*\* for database
-
-
-
-\## 🛠 Tech Stack
-
-\- \*\*Backend:\*\* ASP.NET Core MVC
-
-\- \*\*Database:\*\* SQL Server / SQLite
-
-\- \*\*Frontend:\*\* Razor Views, Bootstrap
-
-\- \*\*Other:\*\* Entity Framework Core, LINQ
-
-
-
-\##  Purpose
+## Purpose
 
 Portfolio-ready real estate project showcasing:
 
-\- \*\*Full-stack ASP.NET Core MVC development\*\*
-
-\- \*\*Database design\*\*
-
-\- \*\*Modern web application practices\*\*
-
-
-
-
-
-
-
-\# Test Heading
-
-\*\*Bold text\*\*
-
-\- List item y
+- **Full-stack ASP.NET Core MVC development**
+- **Database design**
+- **Modern web application practices**
 
 
 
