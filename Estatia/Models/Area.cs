@@ -1,45 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Estatia.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Area
+namespace Estatia.Models
 {
-    
-    private int _id;
-    private string _name;
-    private int _cityId;
-    private City _city;
-
-    [Key]
-    public int Id
+    public class Area
     {
-        get { return _id; }
-        private set { _id = value; }
-    }
+        public int Id { get; set; }
 
-    [Required]
-    [StringLength(100)]
-    public string Name
-    {
-        get { return _name; }
-        set
-        {
-            if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("Area name is required");
+        [Required(ErrorMessage = "Area Name is required")]
+        [StringLength(100)]
+        public string Name { get; set; }
 
-            _name = value;
-        }
-    }
+        
+        [Display(Name = "City")]
+        public int CityId { get; set; }
 
- 
-    [Required]
-    public int CityId
-    {
-        get { return _cityId; }
-        set { _cityId = value; }
-    }
-
-    public City City
-    {
-        get { return _city; }
-        set { _city = value; }
+        [ForeignKey("CityId")]
+        public City City { get; set; }
     }
 }
