@@ -21,5 +21,24 @@ namespace Estatia.Controllers;
             return View(property);
         }
 
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        
+        [HttpPost]
+        public IActionResult Create(Property property)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Properties.Add(property);
+                _context.SaveChanges();
+                
+            }
+
+            return RedirectToAction("Index", "Property");
+        }
        
     }
