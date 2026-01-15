@@ -1,0 +1,25 @@
+@model IEnumerable<Estatia.Models.Property>
+
+<h1>List of the Propery</h1>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Type</th>
+        <th>City</th>
+        <th>Area</th>
+    </tr>
+    
+    @foreach (var pro in Model)
+    {
+        <tr>
+            <th>@pro.Title</th>
+            <th>@pro.Price</th>
+            <th>@pro.Type</th>
+            <th>@pro.City</th>
+            <th>@pro.Area</th>
+        </tr>
+    }
+
+</table>
