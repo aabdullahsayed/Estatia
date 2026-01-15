@@ -1,0 +1,54 @@
+﻿@model Estatia.Models.Property;
+
+<h1>Add Property</h1>
+
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <div>
+        <label asp-for="Title">Add the Title</label>
+        <input asp-for="Title"/>
+        <span asp-validation-for="Title"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Price">Asking Price</label>
+        <input asp-for="Price"/>
+        <span asp-validation-for="Price"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Type">Select the Type</label>
+        <select asp-for="Type"
+                asp-items="Html.GetEnumSelectList<Estatia.Models.ListingType>()">
+            <option value="">--Select Type --</option>
+        </select>
+        
+        <span asp-validation-for="Type"></span>
+    </div>
+    
+    <h3>Location</h3>
+    <div>
+        <label asp-for="Division">Division</label>
+        <input asp-for="Division"/>
+        <span asp-validation-for="Division"></span>
+    </div>
+    
+    <div>
+        <label asp-for="City">City</label>
+        <input asp-for="City"/>
+        <span asp-validation-for="City"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Area">Area</label>
+        <input asp-for="Area"/>
+        <span asp-validation-for="Area"></span>
+    </div>
+    
+    <div>
+        <label asp-for="ImageFile">Upload Image</label>
+        <input asp-for="ImageFile" type="file" accept="image/*"/>
+        <span asp-validation-for="ImageFile"></span>
+    </div>
+    
+    <button type="submit">Upload your Property</button>
+</form>
