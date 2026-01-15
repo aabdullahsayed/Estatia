@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+namespace Estatia.Models;
 public enum ListingType
 {
     Rent,Sell
@@ -17,7 +18,7 @@ public class Property {
     public string Title { get; set; }
     
     [Required]
-    [Range(1,double.MaxValue, ErrorMessage = "Price must be greater than zero")]
+    [Range(typeof(decimal),"1","79228162514264337593543950335", ErrorMessage = "Price must be greater than zero")]
     public decimal Price { get; set; }
     
     [Required]
@@ -35,9 +36,9 @@ public class Property {
     public string? ImageUrl { get; set; }
     
     [NotMapped]
-    [Required(ErrorMessage = "Upload a Photo")]
+   // [Required(ErrorMessage = "Upload a Photo")]
     [Display(Name = "Upload Image")]
-    public IFormFile ImageFile { get; set; }
+    public IFormFile? ImageFile { get; set; }
     
     
 }
