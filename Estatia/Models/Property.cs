@@ -36,9 +36,14 @@ public class Property {
     public string? ImageUrl { get; set; }
     
     [NotMapped]
-   // [Required(ErrorMessage = "Upload a Photo")]
+    [Required(ErrorMessage = "Upload a Photo")]
     [Display(Name = "Upload Image")]
     public IFormFile? ImageFile { get; set; }
     
+
+    public int AgentId { get; set; }
+
+    [ForeignKey("AgentId")]
+    public Agent? Agent { get; set; }
     
 }
