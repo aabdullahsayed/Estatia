@@ -6,13 +6,12 @@ Real Estate, Real Easy
 
 Estatia is a modern **ASP.NET Core** real estate management system designed to streamline the connection between agents, buyers, and administrators. It features a robust property marketplace, role-based security, and an integrated **Machine Learning Price Estimator**.
 
-##  Features
+## ✨ Features
 
-- ** Property Marketplace:** Search, filter, and view properties in real-time.
-- ** ML Price Estimator:** Predict property values using a trained Machine Learning model.
-- ** Role-Based Access Control:** Distinct dashboards for Admins, Agents, and Users.
-- ** Responsive Design:** Built with Bootstrap for seamless mobile and desktop use.
-
+- **Property Marketplace:** Search, filter, and view properties in real-time.
+- **ML Price Estimator:** Predict property values using a trained Machine Learning model.
+- **Role-Based Access Control:** Distinct dashboards for Admins, Agents, and Users.
+- **Responsive Design:** Built with Bootstrap for seamless mobile and desktop use.
 
 ## 🛠 Tech Stack
 
