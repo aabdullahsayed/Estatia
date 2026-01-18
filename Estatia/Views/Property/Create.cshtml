@@ -1,54 +1,105 @@
 ﻿@model Estatia.Models.Property;
 
-<h1>Add Property</h1>
+@{ ViewData["Title"] = "Add Property"; }
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div>
-        <label asp-for="Title">Add the Title</label>
-        <input asp-for="Title"/>
-        <span asp-validation-for="Title"></span>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
+            <div class="form-card">
+                <h2 class="mb-4 fw-bold text-primary">Add New Property</h2>
+                
+                <form asp-action="Create" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Property Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="e.g. Luxury Apartment in Gulshan" />
+                        <span asp-validation-for="Title" class="text-danger small"></span>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Price" class="form-label">Asking Price (৳)</label>
+                            <input asp-for="Price" class="form-control" placeholder="0.00" />
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Type" class="form-label">Listing Type</label>
+                            <select asp-for="Type" class="form-select" 
+                                    asp-items="Html.GetEnumSelectList<Estatia.Models.ListingType>()">
+                                <option value="">-- Select Type --</option>
+                            </select>
+                            <span asp-validation-for="Type" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <hr class="my-4 text-muted" />
+
+                    <h5 class="mb-3 fw-bold text-secondary">Location Details</h5>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label asp-for="Division" class="form-label">Division</label>
+                            <select asp-for="Division" class="form-select">
+                                <option value="">Select Division</option>
+                                <option value="Dhaka">Dhaka</option>
+                                <option value="Chittagong">Chittagong</option>
+                                <option value="Rajshahi">Rajshahi</option>
+                                <option value="Khulna">Khulna</option>
+                                <option value="Barisal">Barisal</option>
+                                <option value="Sylhet">Sylhet</option>
+                                <option value="Rangpur">Rangpur</option>
+                                <option value="Mymensingh">Mymensingh</option>
+                            </select>
+                            <span asp-validation-for="Division" class="text-danger small"></span>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label asp-for="City" class="form-label">City/District</label>
+                            <input asp-for="City" class="form-control" placeholder="e.g. Dhaka North" />
+                            <span asp-validation-for="City" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label asp-for="Area" class="form-label">Area/Thana</label>
+                            <input asp-for="Area" class="form-control" placeholder="e.g. Uttara" />
+                            <span asp-validation-for="Area" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4 mt-4">
+                        <label asp-for="ImageFile" class="form-label">Property Photo</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                        <div class="form-text">Supported formats: JPG, PNG. Max size: 5MB.</div>
+                        <span asp-validation-for="ImageFile" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="mb-3 bg-light p-3 border rounded">
+                        <label asp-for="AgentId" class="form-label fw-bold">Agent ID (Owner)</label>
+                        <input asp-for="AgentId" class="form-control" placeholder="Enter existing Agent ID (e.g. 1)" />
+                        <span asp-validation-for="AgentId" class="text-danger small"></span>
+                        <div class="form-text text-muted">Ensure this ID exists in your Agents table.</div>
+                    </div>
+                    
+                    
+
+                    <div class="d-grid mt-5">
+                        <button type="submit" class="btn btn-primary btn-lg btn-upload">
+                            Upload Property
+                        </button>
+                    </div>
+
+                    <div class="text-center mt-3">
+                        <a asp-controller="Home" asp-action="Index" class="text-decoration-none text-muted">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
-    
-    <div>
-        <label asp-for="Price">Asking Price</label>
-        <input asp-for="Price"/>
-        <span asp-validation-for="Price"></span>
-    </div>
-    
-    <div>
-        <label asp-for="Type">Select the Type</label>
-        <select asp-for="Type"
-                asp-items="Html.GetEnumSelectList<Estatia.Models.ListingType>()">
-            <option value="">--Select Type --</option>
-        </select>
-        
-        <span asp-validation-for="Type"></span>
-    </div>
-    
-    <h3>Location</h3>
-    <div>
-        <label asp-for="Division">Division</label>
-        <input asp-for="Division"/>
-        <span asp-validation-for="Division"></span>
-    </div>
-    
-    <div>
-        <label asp-for="City">City</label>
-        <input asp-for="City"/>
-        <span asp-validation-for="City"></span>
-    </div>
-    
-    <div>
-        <label asp-for="Area">Area</label>
-        <input asp-for="Area"/>
-        <span asp-validation-for="Area"></span>
-    </div>
-    
-    <div>
-        <label asp-for="ImageFile">Upload Image</label>
-        <input asp-for="ImageFile" type="file" accept="image/*"/>
-        <span asp-validation-for="ImageFile"></span>
-    </div>
-    
-    <button type="submit">Upload your Property</button>
-</form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

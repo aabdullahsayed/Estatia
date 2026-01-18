@@ -1,25 +1,95 @@
 @model IEnumerable<Estatia.Models.Property>
+@using Estatia.Models 
 
-<h1>List of the Propery</h1>
+@{ ViewData["Title"] = "Real Estate Listings"; }
 
-<table border="1" cellpadding="10">
-    <tr>
-        <th>Title</th>
-        <th>Price</th>
-        <th>Type</th>
-        <th>City</th>
-        <th>Area</th>
-    </tr>
-    
-    @foreach (var pro in Model)
-    {
-        <tr>
-            <th>@pro.Title</th>
-            <th>@pro.Price</th>
-            <th>@pro.Type</th>
-            <th>@pro.City</th>
-            <th>@pro.Area</th>
-        </tr>
-    }
+<div class="container py-4">
 
-</table>
+    <div class="card shadow-sm mb-5 border-0 bg-white">
+        <div class="card-body p-4">
+            <form asp-action="Index" method="get">
+                <div class="row g-3">
+                    
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0 text-muted">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" name="searchString" class="form-control border-start-0 bg-light" 
+                                   placeholder="City, Area, or Title..." 
+                                   value="@Context.Request.Query["searchString"]"> 
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <select name="type" class="form-select bg-light" asp-items="Html.GetEnumSelectList<ListingType>()">
+                            <option value="">Any Status</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="number" name="maxPrice" class="form-control bg-light" 
+                               placeholder="Max Price"
+                               value="@Context.Request.Query["maxPrice"]">
+                    </div>
+
+                    <div class="col-md-2 d-grid">
+                        <button type="submit" class="btn btn-primary fw-bold">Search</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Latest Listings</h2>
+        <span class="text-muted small">@Model.Count() properties found</span>
+    </div>
+
+    <div class="row g-4">
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center py-5">
+                <div class="mb-3">
+                    <i class="bi bi-house-x text-muted" style="font-size: 3rem;"></i>
+                </div>
+                <h4 class="text-muted">No properties match your search.</h4>
+                <a asp-action="Index" class="btn btn-outline-primary mt-2 rounded-pill">Clear Filters</a>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card property-card h-100">
+                        
+                        <div class="card-img-wrapper">
+                            <span class="status-badge">@item.Type</span>
+                            <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "https://via.placeholder.com/400" : item.ImageUrl)" 
+                                 alt="@item.Title" />
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="fw-bold text-dark mb-1">@item.Title</h5>
+                            <p class="text-muted small mb-2">
+                                <i class="bi bi-geo-alt-fill"></i> @item.Area, @item.City
+                            </p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <h4 class="text-primary fw-bold mb-0">
+                                    ৳@item.Price.ToString("N0")
+                                </h4>
+                                <a class="btn btn-outline-dark btn-sm rounded-pill" 
+                                   asp-action="Details" asp-route-id="@item.Id">
+                                    View Details
+                                </a>>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
