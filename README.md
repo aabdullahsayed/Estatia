@@ -23,7 +23,7 @@ Estatia is a modern **ASP.NET Core** real estate management system designed to s
 
 ---
 
-![Estatia Banner](Estatia.png)
+![Estatia Banner](Estatia/Estatia.png)
 
 ##  How the ML Model Works
 
