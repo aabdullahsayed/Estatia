@@ -23,6 +23,8 @@ Estatia is a modern **ASP.NET Core** real estate management system designed to s
 
 ---
 
+![Estatia Banner](Estatia.png)
+
 ##  How the ML Model Works
 
 Estatia uses a **Linear Regression Model** to estimate property prices based on historical data.
