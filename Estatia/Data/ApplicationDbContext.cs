@@ -12,7 +12,8 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Property> Properties { get; set; }
-    
+    public DbSet<Agent> Agents { get; set; }
+    public DbSet<User> Users { get; set; }
     
 }
 
