@@ -41,9 +41,16 @@
             </form>
         </div>
     </div>
+
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold">Latest Listings</h2>
-        <span class="text-muted small">@Model.Count() properties found</span>
+        <div>
+            <h2 class="fw-bold d-inline-block me-2">Latest Listings</h2>
+            <span class="text-muted small">@Model.Count() properties found</span>
+        </div>
+        
+        <a asp-controller="Predict" asp-action="Index" class="btn btn-success text-white fw-bold rounded-pill px-4 shadow-sm">
+            <i class="bi bi-robot me-1"></i> Predict Price using ML
+        </a>
     </div>
 
     <div class="row g-4">
@@ -62,11 +69,13 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-4">
-                    <div class="card property-card h-100">
+                    <div class="card property-card h-100 shadow-sm border-0">
                         
-                        <div class="card-img-wrapper">
-                            <span class="status-badge">@item.Type</span>
+                        <div class="card-img-wrapper position-relative">
+                            <span class="status-badge badge bg-dark position-absolute top-0 start-0 m-2">@item.Type</span>
                             <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "https://via.placeholder.com/400" : item.ImageUrl)" 
+                                 class="card-img-top" 
+                                 style="height: 250px; object-fit: cover;"
                                  alt="@item.Title" />
                         </div>
 
@@ -83,7 +92,7 @@
                                 <a class="btn btn-outline-dark btn-sm rounded-pill" 
                                    asp-action="Details" asp-route-id="@item.Id">
                                     View Details
-                                </a>>
+                                </a>
                             </div>
                         </div>
 
