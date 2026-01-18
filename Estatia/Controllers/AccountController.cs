@@ -18,9 +18,9 @@ namespace Estatia.Controllers
         }
 
   [Authorize(Roles = "User")]
-        public IActionResult User()
+        public IActionResult UserProfile()
         {
-            return View();
+            return View("User");
         }
 
         [HttpGet]
