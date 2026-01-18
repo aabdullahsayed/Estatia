@@ -40,13 +40,15 @@ namespace Estatia.Controllers
 
            return View(myProperties);
        }
+       
+       [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
         }
    
         
-       
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(Agent agent)
         {
