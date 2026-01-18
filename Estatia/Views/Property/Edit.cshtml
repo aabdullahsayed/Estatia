@@ -1,0 +1,104 @@
+﻿@model Estatia.Models.Property
+
+@{ ViewData["Title"] = "Edit Property"; }
+
+<div class="container py-5" style="max-width: 700px;">
+    
+    <div class="card shadow border-0">
+        <div class="card-header bg-white py-3">
+            <h4 class="mb-0 fw-bold text-primary">Edit Property Details</h4>
+        </div>
+        
+        <div class="card-body p-4">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="AgentId" />
+                <input type="hidden" asp-for="ImageUrl" />
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label fw-bold">Property Title</label>
+                    <input asp-for="Title" class="form-control" placeholder="e.g. Luxury Apartment in Banani" />
+                    <span asp-validation-for="Title" class="text-danger small"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Price" class="form-label fw-bold">Price (৳)</label>
+                        <div class="input-group">
+                            <span class="input-group-text">৳</span>
+                            <input asp-for="Price" type="number" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Type" class="form-label fw-bold">Listing Type</label>
+                        <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<Estatia.Models.ListingType>()"></select>
+                        <span asp-validation-for="Type" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Division" class="form-label fw-bold">Division</label>
+                        <input asp-for="Division" class="form-control" placeholder="Dhaka" />
+                        <span asp-validation-for="Division" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="City" class="form-label fw-bold">City</label>
+                        <input asp-for="City" class="form-control" placeholder="Dhaka" />
+                        <span asp-validation-for="City" class="text-danger small"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Area" class="form-label fw-bold">Area</label>
+                        <input asp-for="Area" class="form-control" placeholder="Gulshan-1" />
+                        <span asp-validation-for="Area" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Property Image</label>
+                    
+                    <div class="card bg-light border p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                                {
+                                    <img src="@Model.ImageUrl" class="rounded" style="width: 80px; height: 80px; object-fit: cover;" />
+                                }
+                                else
+                                {
+                                    <div class="bg-secondary rounded d-flex align-items-center justify-content-center text-white" style="width: 80px; height: 80px;">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+                                }
+                            </div>
+                            
+                            <div class="flex-grow-1">
+                                <label asp-for="ImageFile" class="form-label small text-muted mb-1">Upload New Photo (Optional)</label>
+                                <input asp-for="ImageFile" type="file" class="form-control form-control-sm" accept="image/*" />
+                                <span class="text-muted" style="font-size: 0.8rem;">Leave blank to keep the current photo.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger small"></span>
+                </div>
+
+                <div class="d-flex justify-content-between pt-3 border-top">
+                    <a asp-controller="Agent" asp-action="Index" class="btn btn-light border">Cancel</a>
+                    
+                    <button type="submit" class="btn btn-primary fw-bold px-4">
+                        <i class="bi bi-save me-1"></i> Save Changes
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
