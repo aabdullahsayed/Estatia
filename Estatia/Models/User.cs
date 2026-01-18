@@ -18,19 +18,19 @@ public class User
 
     public int Id { get; set; }
 
-    // === NEW IDENTITY FIELDS ===
+ 
     [Required(ErrorMessage = "Please enter your full name")]
     [StringLength(100)]
     [Display(Name = "Full Name")]
-    public string FullName { get; set; } // e.g. "John Doe"
+    public string FullName { get; set; } 
 
     [Required(ErrorMessage = "Phone number is required for contact")]
     [Phone]
     [Display(Name = "Phone Number")]
-    public string PhoneNumber { get; set; } // e.g. "01712-345678"
+    public string PhoneNumber { get; set; }
 
  
-    // === EXISTING FIELDS ===
+  
     [Required]
     [EmailAddress]
     public string Email { get; set; }
