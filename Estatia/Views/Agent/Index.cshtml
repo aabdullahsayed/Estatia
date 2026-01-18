@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Estatia.Models.Property>
+
+@{
+    ViewData["Title"] = "My Properties";
+}
+
+<div class="container py-5">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold text-primary">Agent Dashboard</h2>
+            <p class="text-muted mb-0">Welcome back, @User.Identity.Name</p>
+        </div>
+        <div>
+            <a asp-controller="Property" asp-action="Create" class="btn btn-success fw-bold shadow-sm">
+                <i class="bi bi-plus-lg"></i> Post New Property
+            </a>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-header bg-white py-3 border-bottom">
+            <h5 class="mb-0 fw-bold">My Active Listings <span class="badge bg-light text-dark border ms-2">@Model.Count()</span></h5>
+        </div>
+        
+        <div class="card-body p-0">
+            @if (!Model.Any())
+            {
+                <div class="text-center py-5">
+                    <div class="mb-3">
+                        <i class="bi bi-house-dash text-muted" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5 class="text-muted">No properties found.</h5>
+                    <p class="text-muted small">Get started by posting your first real estate listing.</p>
+                    <a asp-controller="Property" asp-action="Create" class="btn btn-outline-primary btn-sm mt-2">Create Listing</a>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4">Image</th>
+                                <th>Title</th>
+                                <th>Location</th>
+                                <th>Price</th>
+                                <th>Type</th>
+                                <th class="text-end pe-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4" style="width: 100px;">
+                                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                        {
+                                            <img src="@item.ImageUrl" class="rounded border" width="60" height="60" style="object-fit: cover;" />
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light rounded border d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                                                <i class="bi bi-image text-muted"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td class="fw-bold text-dark">@item.Title</td>
+                                    <td class="text-muted small">
+                                        <i class="bi bi-geo-alt"></i> @item.Area, @item.City
+                                    </td>
+                                    <td class="fw-bold text-primary">৳@item.Price.ToString("N0")</td>
+                                    <td>
+                                        @if(item.Type == Estatia.Models.ListingType.Sell)
+                                        {
+                                            <span class="badge bg-danger">Sell</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-success">Rent</span>
+                                        }
+                                    </td>
+                                    <td class="text-end pe-4">
+                                        <a asp-controller="Property" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info me-1" title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-controller="Property" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary me-1" title="Edit">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a asp-controller="Property" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger" title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>
