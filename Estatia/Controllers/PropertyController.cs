@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore; // Needed for .Include()
+using Microsoft.EntityFrameworkCore; 
 using Estatia.Data;
 using Estatia.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -105,7 +105,7 @@ namespace Estatia.Controllers;
             if (id == null) return NotFound();
 
             var property = await _context.Properties
-                .Include(p => p.Agent) // <--- Critical: Load the Agent (User) info
+                .Include(p => p.Agent) 
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (property == null) return NotFound();
