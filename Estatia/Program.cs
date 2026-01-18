@@ -1,6 +1,7 @@
 using Estatia.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Estatia.Services;
 
 namespace Estatia
 {
@@ -27,6 +28,7 @@ namespace Estatia
 
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSingleton<PricePredictionService>();
        
             var app = builder.Build();
 
