@@ -72,7 +72,7 @@ namespace Estatia.Controllers
 
                 if (userRole == "Admin") return RedirectToAction("Dashboard", "Admin");
                 if (userRole == "Agent") return RedirectToAction("Index", "Agent");
-                return RedirectToAction("User", "Account");
+                return RedirectToAction("UserProfile", "Account");
             }
 
             ViewBag.Error = "Invalid Email or Password";
